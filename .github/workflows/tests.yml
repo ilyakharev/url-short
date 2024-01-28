@@ -28,8 +28,10 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: secret
           POSTGRES_DB: simple_bank
+        ports:
+          - 5432:5432
     env:
-      POSTGRES_URL: postgresql://root:secret@localhost/simple_bank?sslmode=disable
+      POSTGRES_URL: postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package url_shortener;
+
+option go_package = "proto/";
+
+service GrpcHandler {
+  rpc CreateShortURL(CreateShortURLRequest) returns (CreateShortURLResponse);
+  rpc GetFullURL(GetFullURLRequest) returns (GetFullURLResponse);
+}
+message CreateShortURLRequest{
+  string rawFullURL = 1;
+}
+message CreateShortURLResponse{
+  string token = 1;
+}
+message GetFullURLRequest{
+  string rawToken = 1;
+}
+message GetFullURLResponse{
+  string fullURL = 1;
+}
